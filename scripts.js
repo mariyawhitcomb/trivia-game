@@ -7,7 +7,22 @@ var buttonNextIncorrect = document.querySelector('.button-next-incorrect')
 buttonNextIncorrect.addEventListener('click', changeQ)
 var displayQuestions = document.querySelector('.question')
 var score = 0
-let i = 0
+let i
+var usedQuestions = []
+var index
+function generateIndex () {
+  index = Math.floor((Math.random() * questions.length) + 0)
+}
+function randomQuestion () {
+  generateIndex()
+  if (usedQuestions.includes(index)) {
+    generateIndex()
+  } else {
+    usedQuestions.push(index)
+    i = index
+    return i
+  }
+}
 
 var questions = [
   {
@@ -51,7 +66,7 @@ function generateQuestion (i) {
 
 function changeQ () {
   i += 1
-  generateQuestion(i)
+  generateQuestion(randomQuestion())
   console.log(i)
   document.body.classList.remove('good-job')
   document.body.classList.remove('game-over')
@@ -80,4 +95,5 @@ function getAnswerValue () {
     answerValue = document.getElementById('choice3').innerText
   }
 }
-generateQuestion(i)
+
+generateQuestion(randomQuestion())
