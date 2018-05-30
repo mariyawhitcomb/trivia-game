@@ -8,7 +8,6 @@ function checkAnswer (radio) {
   if (answerValue === 'correct') {
     console.log('correct')
     score +=10
-    console.log(score)
     document.body.classList.add('good-job')
   } else { 
       console.log('wrong')

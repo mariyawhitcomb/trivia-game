@@ -8,12 +8,11 @@ function checkAnswer (radio) {
   if (answerValue === 'correct') {
     console.log('correct')
     score +=10
-    console.log(score)
     document.body.classList.add('good-job')
   } else { 
-      console.log('wrong')
-      document.body.classList.add('game-over')
-    }
+    console.log('wrong')
+    document.body.classList.add('game-over')
+}
 }
 function getAnswerValue () {
   if (document.getElementById('answer1').checked) {
