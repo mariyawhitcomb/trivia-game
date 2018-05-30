@@ -9,8 +9,6 @@ var displayQuestions = document.querySelector('.question')
 var score = 0
 let i = 0
 
-
-
 var questions = [
   {
     question: 'QUESTION 1',
@@ -50,8 +48,6 @@ function generateQuestion (i) {
     document.querySelector(`#choice${x + 1}`).innerText = questions[i].prompts[x]
   }
 }
-
-generateQuestion(i)
 
 function changeQ () {
   i += 1
