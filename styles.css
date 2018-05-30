@@ -1,20 +1,58 @@
-.question {
-    z-index: 0;
+html {
+    font-size: 16px;
 }
+body {
+    font-family: 'Inconsolata', monospace;
+    background-color: rgb(206, 211, 211);
+    color:  rgb(38, 65, 65);
+}
+header {
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+    border-bottom: 5px solid;
+}
+h1 {
+    font-size: 3em;
+}
+h2 {
+    font-size: 2.5em;
+    margin-left: 3em;
+    margin-bottom: 0px;
+}
+p {
+    font-size: 1.5em;
+    margin: 2em auto 2em 0.5em;
+}
+button {
+    margin-left: 4em;
+    margin-top: 2em;
+    font-family: 'Inconsolata', monospace;
+    font-size: 2em;
+    border-radius: 5px;
+}
+.radio {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
 .nextQuestion {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 4rem;
-    background-color: white;
     text-align: center;
     z-index: 10;
     opacity: 0;
     pointer-events: none;
     transition: all 250ms ease;
-    min-width: 80vw;
-    min-height: 55vh;
+    min-width: 100vw;
+    min-height: 30vh;
+    background-color: rgb(206, 211, 211);
+
   }
   
   .good-job .nextQuestion {
@@ -27,14 +65,14 @@
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 4rem;
-    background-color: white;
+    background-color: rgb(206, 211, 211);
     text-align: center;
     z-index: 10;
     opacity: 0;
     pointer-events: none;
     transition: all 250ms ease;
     min-width: 100vw;
-    min-height: 55vh;
+    min-height: 30vh;
   }
   
   .game-over .wrong-answer {
