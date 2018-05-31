@@ -1,4 +1,4 @@
-startGame()
+
 var questions = [
 //   {
 //     question: 'QUESTION 1',
@@ -56,6 +56,7 @@ var questions = [
     answer: 'answer1'
   }
 ]
+
 var newGame = document.querySelector('.button-end')
 newGame.addEventListener('click', restart)
 var startButton = document.querySelector('.button-start')
@@ -69,13 +70,18 @@ var buttonNextIncorrect = document.querySelector('.button-next-incorrect')
 buttonNextIncorrect.addEventListener('click', changeQ)
 var displayQuestions = document.querySelector('.question')
 var score = 0
-var highScore = [0]
+var highScore = []
 var newHighScore
 let i = 0
 var index = []
-for (let i = 0; i < questions.length; i++) {
-  index.push(i)
+
+function refill () {
+  for (let n = 0; n < questions.length; n++) {
+    index.push(n)
+  }
+  return index
 }
+
 function randomQuestion () {
   i = index[Math.floor(Math.random() * index.length)]
   var num = index.indexOf(i)
@@ -84,7 +90,7 @@ function randomQuestion () {
 }
 
 function generateQuestion () {
-  randomQuestion()
+  i = randomQuestion()
   displayQuestions.innerText = questions[i].question
   for (let x = 0; x < questions[i].prompts.length; x++) {
     document.querySelector(`#choice${x + 1}`).innerText = questions[i].prompts[x]
@@ -99,14 +105,16 @@ function changeQ () {
     document.body.classList.remove('game-over')
   } else {
     document.body.classList.add('game-end')
-    highScore.push(score)
-    highScore.sort((a, b) => a < b ? 1 : -1)
-    highScore.pop()
-    if (score === highScore[0]) {
-      alert('Congratulations! New High Score!')
-      newHighScore = `${highScore[0]}`
-      localStorage.setItem("newHighScore", newHighScore);
-    }
+    // highScore[0] = localStorage.setItem("newHighScore", newHighScore);
+    // highScore[0] = parseFloat(highScore[0])
+    // highScore.push(score)
+    // highScore.sort((a, b) => a < b ? 1 : -1)
+    // highScore.pop()
+    // if (score === highScore[0]) {
+    //   alert('Congratulations! New High Score!')
+    //   newHighScore = `${highScore[0]}`
+    //   localStorage.setItem("newHighScore", newHighScore);
+    // }
   }
 }
 function checkAnswer (radio) {
@@ -133,14 +141,19 @@ function getAnswerValue () {
     answerValue = document.getElementById('choice3').innerText
   }
 }
-function startGame () {
-  document.body.classList.add('start')
-}
 function begin () {
   document.body.classList.remove('start')
+  document.body.classList.remove('good-job')
+  document.body.classList.remove('game-over')
+  refill()
   generateQuestion()
 }
 function restart () {
+  document.body.classList.remove('game-end')
   score = 0
   startGame()
 }
+function startGame () {
+  document.body.classList.add('start')
+}
+startGame()
