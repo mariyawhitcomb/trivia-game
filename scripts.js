@@ -68,13 +68,8 @@ var score = 0
 let i = 0
 var index = []
 for (let i = 0; i < questions.length; i++) {
-    index.push(i)
+  index.push(i)
 }
-// var index
-// function generateIndex () {
-
-//   return index
-// }
 function randomQuestion () {
   i = index[Math.floor(Math.random() * index.length)]
   var num = index.indexOf(i)
@@ -91,10 +86,14 @@ function generateQuestion () {
 }
 
 function changeQ () {
-  generateQuestion()
-  console.log(i)
-  document.body.classList.remove('good-job')
-  document.body.classList.remove('game-over')
+  if (index.length > 0) {
+    generateQuestion()
+    console.log(i)
+    document.body.classList.remove('good-job')
+    document.body.classList.remove('game-over')
+  } else {
+    document.body.classList.add('game-end')
+  }
 }
 function checkAnswer (radio) {
   radio.preventDefault()

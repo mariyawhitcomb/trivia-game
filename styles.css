@@ -79,3 +79,23 @@ button {
     opacity: 1;
     pointer-events: all;
   }
+  .end {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 4rem;
+    background-color: rgb(206, 211, 211);
+    text-align: center;
+    z-index: 20;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 250ms ease;
+    min-width: 100vw;
+    min-height: 30vh;
+  }
+  
+  .game-end .end {
+    opacity: 1;
+    pointer-events: all;
+  }
