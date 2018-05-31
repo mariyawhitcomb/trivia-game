@@ -13,40 +13,45 @@
         <h1>Trivia Game</h1>
     </header>
     <div class="questions">
-            <h2 class="question-number"></h2>
+            <h2 class="question-number container"></h2>
             <div class="question"></div>
-            <form>
-                    <div class="radio">
-                      <input type="radio" id="answer1" name="answer">
+            <form class="container">
+                    <div class="radio container">
+                        <div class="radio style">
+                      <input class="radio-button" type="radio" id="answer1" name="answer">
                       <label id="choice1" for="answer1"></label>
-                      <input type="radio" id="answer2" name="answer">
-                      <label id="choice2" for="answer2"></label>
-                      <input type="radio" id="answer3" name="answer">
-                      <label id="choice3" for="answer3"></label>
                     </div>
-                    <div>
-                      <button id="submit" type="submit">Submit</button>
+                    <div class="radio style">
+                      <input class="radio-button" type="radio" id="answer2" name="answer">
+                      <label id="choice2" for="answer2"></label>
+                    </div>
+                    <div class="radio style">
+                      <input class="radio-button" type="radio" id="answer3" name="answer">
+                      <label id="choice3" for="answer3"></label>
+                    </div></div>
+                    <div class="container">
+                      <button class="container" id="submit" type="submit">Submit</button>
                     </div>
             </form>
             </div>
     
     <div class="submit-screen">
-            <section class="beginning">
+            <section class="beginning container">
                     <h1 class="correct-answer">Hello</h1>
-                    <button class="button-start" type="submit">Start</button>
+                    <button class="button-start container" type="submit">Start</button>
                 </section>
-            <section class="nextQuestion">
+            <section class="nextQuestion container">
                 <h1 class="correct-answer">Correct!</h1>
-                <button class="button-next-correct" type="submit">Next Question</button>
+                <button class="button-next container" type="submit">Next Question</button>
             </section>
-            <section class="wrong-answer">
+            <section class="wrong-answer container">
                 <h1 class="incorrect">Incorrect!</h1>
-                <button class="button-next-incorrect" type="submit">Next Question</button>
+                <button class="button-next container" type="submit">Next Question</button>
             </section>
-            <section class="end">
+            <section class="end container">
                     <h1 class="incorrect">No more questions</h1>
                     <div class="score-display"></div>
-                    <button class="button-end" type="submit">New game</button>
+                    <button class="button-end container" type="submit">New game</button>
                 </section>
         </div>
 <script src="scripts.js"></script>
