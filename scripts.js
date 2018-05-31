@@ -94,6 +94,7 @@ function generateQuestion () {
   for (let x = 0; x < questions[i].prompts.length; x++) {
     document.querySelector(`#choice${x + 1}`).innerText = questions[i].prompts[x]
   }
+  document.querySelector('.question-number').innerText = `Question ${questions.length-index.length} of ${questions.length}`
 }
 
 function changeQ () {
@@ -105,6 +106,8 @@ function changeQ () {
   } else {
     getHighScore()
     document.body.classList.add('game-end')
+    document.querySelector('.score-display').innerText = `Your score is ${score}\nHigh score is ${parseFloat(highScore.getItem('highScore'))}`
+
   }
 }
 function checkAnswer (radio) {
@@ -152,4 +155,7 @@ function getHighScore () {
       highScore.setItem('highScore', `${score}`)
       alert(`Congratulations!\nNew High Score is ${score}`)
   }
+}
+function resetScore(){
+    highScore.setItem('highScore', `0`)
 }
