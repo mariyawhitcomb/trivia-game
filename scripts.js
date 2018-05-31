@@ -69,10 +69,12 @@ var buttonNextIncorrect = document.querySelector('.button-next-incorrect')
 buttonNextIncorrect.addEventListener('click', changeQ)
 var displayQuestions = document.querySelector('.question')
 var score = 0
+var highScore = [0]
+var newHighScore
 let i = 0
 var index = []
 for (let i = 0; i < questions.length; i++) {
-    index.push(i)
+  index.push(i)
 }
 function randomQuestion () {
   i = index[Math.floor(Math.random() * index.length)]
@@ -97,6 +99,14 @@ function changeQ () {
     document.body.classList.remove('game-over')
   } else {
     document.body.classList.add('game-end')
+    highScore.push(score)
+    highScore.sort((a, b) => a < b ? 1 : -1)
+    highScore.pop()
+    if (score === highScore[0]) {
+      alert('Congratulations! New High Score!')
+      newHighScore = `${highScore[0]}`
+      localStorage.setItem("newHighScore", newHighScore);
+    }
   }
 }
 function checkAnswer (radio) {
