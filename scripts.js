@@ -1,39 +1,40 @@
+startGame()
 var questions = [
-  {
-    question: 'QUESTION 1',
-    prompts: ['answer1', 'answer2', 'answer3'],
-    answer: 'answer1'
-  },
-  {
-    question: 'QUESTION 2',
-    prompts: ['answer1', 'answer2', 'answer3'],
-    answer: 'answer1'
-  },
-  {
-    question: 'QUESTION 3',
-    prompts: ['answer2', 'answer2', 'answer2'],
-    answer: 'answer1'
-  },
-  {
-    question: 'QUESTION 4',
-    prompts: ['answer1', 'answer2', 'answer3'],
-    answer: 'answer1'
-  },
-  {
-    question: 'QUESTION 5',
-    prompts: ['answer1', 'answer2', 'answer3'],
-    answer: 'answer1'
-  },
-  {
-    question: 'QUESTION 6',
-    prompts: ['answer1', 'answer2', 'answer3'],
-    answer: 'answer1'
-  },
-  {
-    question: 'QUESTION 7',
-    prompts: ['answer2', 'answer2', 'answer2'],
-    answer: 'answer1'
-  },
+//   {
+//     question: 'QUESTION 1',
+//     prompts: ['answer1', 'answer2', 'answer3'],
+//     answer: 'answer1'
+//   },
+//   {
+//     question: 'QUESTION 2',
+//     prompts: ['answer1', 'answer2', 'answer3'],
+//     answer: 'answer1'
+//   },
+//   {
+//     question: 'QUESTION 3',
+//     prompts: ['answer2', 'answer2', 'answer2'],
+//     answer: 'answer1'
+//   },
+//   {
+//     question: 'QUESTION 4',
+//     prompts: ['answer1', 'answer2', 'answer3'],
+//     answer: 'answer1'
+//   },
+//   {
+//     question: 'QUESTION 5',
+//     prompts: ['answer1', 'answer2', 'answer3'],
+//     answer: 'answer1'
+//   },
+//   {
+//     question: 'QUESTION 6',
+//     prompts: ['answer1', 'answer2', 'answer3'],
+//     answer: 'answer1'
+//   },
+//   {
+//     question: 'QUESTION 7',
+//     prompts: ['answer2', 'answer2', 'answer2'],
+//     answer: 'answer1'
+//   },
   {
     question: 'QUESTION 8',
     prompts: ['answer1', 'answer2', 'answer3'],
@@ -55,7 +56,10 @@ var questions = [
     answer: 'answer1'
   }
 ]
-
+var newGame = document.querySelector('.button-end')
+newGame.addEventListener('click', restart)
+var startButton = document.querySelector('.button-start')
+startButton.addEventListener('click', begin)
 var button = document.querySelector('#submit')
 button.addEventListener('click', checkAnswer)
 var answerValue
@@ -68,7 +72,7 @@ var score = 0
 let i = 0
 var index = []
 for (let i = 0; i < questions.length; i++) {
-  index.push(i)
+    index.push(i)
 }
 function randomQuestion () {
   i = index[Math.floor(Math.random() * index.length)]
@@ -119,5 +123,14 @@ function getAnswerValue () {
     answerValue = document.getElementById('choice3').innerText
   }
 }
-
-generateQuestion()
+function startGame () {
+  document.body.classList.add('start')
+}
+function begin () {
+  document.body.classList.remove('start')
+  generateQuestion()
+}
+function restart () {
+  score = 0
+  startGame()
+}
