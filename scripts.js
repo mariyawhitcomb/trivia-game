@@ -1,29 +1,3 @@
-var button = document.querySelector('#submit')
-button.addEventListener('click', checkAnswer)
-var answerValue
-var buttonNextCorrect = document.querySelector('.button-next-correct')
-buttonNextCorrect.addEventListener('click', changeQ)
-var buttonNextIncorrect = document.querySelector('.button-next-incorrect')
-buttonNextIncorrect.addEventListener('click', changeQ)
-var displayQuestions = document.querySelector('.question')
-var score = 0
-let i
-var usedQuestions = []
-var index
-function generateIndex () {
-  index = Math.floor((Math.random() * questions.length) + 0)
-}
-function randomQuestion () {
-  generateIndex()
-  if (usedQuestions.includes(index)) {
-    generateIndex()
-  } else {
-    usedQuestions.push(index)
-    i = index
-    return i
-  }
-}
-
 var questions = [
   {
     question: 'QUESTION 1',
@@ -32,12 +6,12 @@ var questions = [
   },
   {
     question: 'QUESTION 2',
-    prompts: ['answer2', 'answer2', 'answer2'],
+    prompts: ['answer1', 'answer2', 'answer3'],
     answer: 'answer1'
   },
   {
     question: 'QUESTION 3',
-    prompts: ['answer1', 'answer2', 'answer3'],
+    prompts: ['answer2', 'answer2', 'answer2'],
     answer: 'answer1'
   },
   {
@@ -54,19 +28,70 @@ var questions = [
     question: 'QUESTION 6',
     prompts: ['answer1', 'answer2', 'answer3'],
     answer: 'answer1'
+  },
+  {
+    question: 'QUESTION 7',
+    prompts: ['answer2', 'answer2', 'answer2'],
+    answer: 'answer1'
+  },
+  {
+    question: 'QUESTION 8',
+    prompts: ['answer1', 'answer2', 'answer3'],
+    answer: 'answer1'
+  },
+  {
+    question: 'QUESTION 9',
+    prompts: ['answer1', 'answer2', 'answer3'],
+    answer: 'answer1'
+  },
+  {
+    question: 'QUESTION 10',
+    prompts: ['answer1', 'answer2', 'answer3'],
+    answer: 'answer1'
+  },
+  {
+    question: 'QUESTION 11',
+    prompts: ['answer1', 'answer2', 'answer3'],
+    answer: 'answer1'
   }
 ]
-function generateQuestion (i) {
-  displayQuestions.innerText = questions[i].question
 
+var button = document.querySelector('#submit')
+button.addEventListener('click', checkAnswer)
+var answerValue
+var buttonNextCorrect = document.querySelector('.button-next-correct')
+buttonNextCorrect.addEventListener('click', changeQ)
+var buttonNextIncorrect = document.querySelector('.button-next-incorrect')
+buttonNextIncorrect.addEventListener('click', changeQ)
+var displayQuestions = document.querySelector('.question')
+var score = 0
+let i = 0
+var index = []
+for (let i = 0; i < questions.length; i++) {
+    index.push(i)
+}
+// var index
+// function generateIndex () {
+
+//   return index
+// }
+function randomQuestion () {
+  i = index[Math.floor(Math.random() * index.length)]
+  var num = index.indexOf(i)
+  index.splice(num, 1)
+  return i
+}
+
+function generateQuestion () {
+  randomQuestion()
+  displayQuestions.innerText = questions[i].question
   for (let x = 0; x < questions[i].prompts.length; x++) {
     document.querySelector(`#choice${x + 1}`).innerText = questions[i].prompts[x]
   }
 }
 
 function changeQ () {
-  i += 1
-  generateQuestion(randomQuestion())
+  generateQuestion()
   console.log(i)
   document.body.classList.remove('good-job')
   document.body.classList.remove('game-over')
@@ -96,4 +121,4 @@ function getAnswerValue () {
   }
 }
 
-generateQuestion(randomQuestion())
+generateQuestion()
