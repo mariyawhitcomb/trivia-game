@@ -36,9 +36,9 @@ var questions = [
 //     answer: 'answer1'
 //   },
   {
-    question: 'QUESTION 8',
-    prompts: ['answer1', 'answer2', 'answer3'],
-    answer: 'answer1'
+    question: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
+    prompts: ['Itaque modi dignissimos deleniti iste ipsam, animi', 'beatae quod tempora quia sapiente aliquid', 'beatae quod tempora quia sapiente aliquid'],
+    answer: 'Itaque modi dignissimos deleniti iste ipsam, animi'
   },
   {
     question: 'QUESTION 9',

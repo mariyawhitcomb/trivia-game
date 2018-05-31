@@ -23,6 +23,10 @@ p {
     font-size: 1.5em;
     margin: 2em auto 2em 0.5em;
 }
+label {
+    margin: 10px;
+    font-size: 1.2em;
+}
 button {
     margin-top: 2em;
     font-family: 'Inconsolata', monospace;
@@ -45,6 +49,7 @@ button#submit {
     box-shadow: 7px -5px 9px 0px #a9b5b5;
     margin-top: 0;
 }
+
 div.question {
     font-size: 1.3em;
     margin-left: 4em;
@@ -56,18 +61,18 @@ div.question {
     justify-content: center;
 }
 .radio.style {
-    display: flex;
+        display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: left;
     margin: 1em;
+    min-width: 700px;
+    box-shadow: 3px 3px 9px #5b9292;
+    border-radius: 10px;
+    min-height: 70px;
 }
-.radio.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: left;
-    align-self: flex-start;
+.radio-button {
+
 }
 .nextQuestion {
     position: absolute;
@@ -76,12 +81,12 @@ div.question {
     transform: translate(-50%, -50%);
     padding: 4rem;
     text-align: center;
-    z-index: 10;
+    z-index: 15;
     opacity: 0;
     pointer-events: none;
     transition: all 250ms ease;
     min-width: 100vw;
-    min-height: 30vh;
+    min-height: 52vh;
     background-color: rgb(206, 211, 211);
 
   }
@@ -103,7 +108,7 @@ div.question {
     pointer-events: none;
     transition: all 250ms ease;
     min-width: 100vw;
-    min-height: 30vh;
+    min-height: 52vh;
   }
   
   .game-over .wrong-answer {
@@ -123,7 +128,7 @@ div.question {
     pointer-events: none;
     transition: all 250ms ease;
     min-width: 100vw;
-    min-height: 30vh;
+    min-height: 52vh;
   }
   
   .game-end .end {
@@ -143,7 +148,7 @@ div.question {
     pointer-events: none;
     transition: all 250ms ease;
     min-width: 100vw;
-    min-height: 30vh;
+    min-height: 52vh;
   }
   
   .start .beginning {
