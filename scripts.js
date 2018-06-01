@@ -1,59 +1,65 @@
 
 var questions = [
-//   {
-//     question: 'QUESTION 1',
-//     prompts: ['answer1', 'answer2', 'answer3'],
-//     answer: 'answer1'
-//   },
-//   {
-//     question: 'QUESTION 2',
-//     prompts: ['answer1', 'answer2', 'answer3'],
-//     answer: 'answer1'
-//   },
-//   {
-//     question: 'QUESTION 3',
-//     prompts: ['answer2', 'answer2', 'answer2'],
-//     answer: 'answer1'
-//   },
-//   {
-//     question: 'QUESTION 4',
-//     prompts: ['answer1', 'answer2', 'answer3'],
-//     answer: 'answer1'
-//   },
-//   {
-//     question: 'QUESTION 5',
-//     prompts: ['answer1', 'answer2', 'answer3'],
-//     answer: 'answer1'
-//   },
-//   {
-//     question: 'QUESTION 6',
-//     prompts: ['answer1', 'answer2', 'answer3'],
-//     answer: 'answer1'
-//   },
-//   {
-//     question: 'QUESTION 7',
-//     prompts: ['answer2', 'answer2', 'answer2'],
-//     answer: 'answer1'
-//   },
   {
-    question: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
-    prompts: ['Itaque modi dignissimos deleniti iste ipsam, animi', 'beatae quod tempora quia sapiente aliquid', 'beatae quod tempora quia sapiente aliquid'],
-    answer: 'Itaque modi dignissimos deleniti iste ipsam, animi'
+    question: 'Inside which HTML element do we put the JavaScript',
+    prompts: ['<script>', '<js>', '<javascript>'],
+    answer: '<script>'
   },
   {
-    question: 'QUESTION 9',
-    prompts: ['answer1', 'answer2', 'answer3'],
-    answer: 'answer1'
+    question: 'Where is the correct place to insert a JavaScript?',
+    prompts: ['The <head> section', 'Both the <head> section and the <body> section are correct', 'The <body> section'],
+    answer: 'Both the <head> section and the <body> section are correct'
+
   },
   {
-    question: 'QUESTION 10',
-    prompts: ['answer1', 'answer2', 'answer3'],
-    answer: 'answer1'
+    question: 'What is the correct syntax for referring to an external script called "xxx.js"?',
+    prompts: ['<script name="xxx.js">','<script src="xxx.js">','<script href="xxx.js">'],
+    answer: '<script src="xxx.js">'
   },
   {
-    question: 'QUESTION 11',
-    prompts: ['answer1', 'answer2', 'answer3'],
-    answer: 'answer1'
+    question: 'How do you write "Hello World" in an alert box?',
+    prompts: ['msg("Hello World")', 'msgBox("Hello World")', 'alert("Hello World")', 'alertBox("Hello World")'],
+    answer: 'alert("Hello World")'
+  },
+  {
+    question: 'How do you create a function in JavaScript?',
+    prompts: ['function:myFunction()', 'function = myFunction()', 'function myFunction()'],
+    answer: 'function myFunction()'
+  },
+  {
+    question: 'How do you call a function named "myFunction"?',
+    prompts: ['call myFunction()', 'call function myFunction()', 'myFunction()'],
+    answer: 'myFunction()'
+  },
+  {
+    question: 'How to write an IF statement in JavaScript?',
+    prompts: ['if i == 5 then', 'if i = 5', 'if (i == 5)'],
+    answer: 'if (i == 5)'
+  },
+  {
+    question: 'How to write an IF statement for executing some code if "i" is NOT equal to 5?',
+    prompts: ['if (i != 5)', 'if i =! 5 then', 'if (i <> 5)'],
+    answer: 'if (i != 5)'
+  },
+  {
+    question: 'How can you add a comment in a JavaScript?',
+    prompts: ["'This is a comment", "//This is a comment", "<!--This is a comment-->"],
+    answer: '//This is a comment'
+  },
+  {
+    question: 'How do you round the number 7.25, to the nearest integer?',
+    prompts: ['Math.round(7.25)', 'rnd(7.25)', 'Math.rnd(7.25)'],
+    answer: 'Math.round(7.25)'
+  },
+  {
+    question: 'How do you find the number with the highest value of x and y?',
+    prompts: ['ceil(x, y)', 'Math.max(x, y)', 'Math.ceil(x, y)'],
+    answer: 'Math.max(x, y)'
+  },
+  {
+    question: "How can you detect the client's browser name?",
+    prompts: ['client.navName', 'navigator.appName', 'browser.name'],
+    answer: 'navigator.appName'
   }
 ]
 var radioButton = document.querySelectorAll('.radio-button')
@@ -109,6 +115,8 @@ function changeQ () {
     document.body.classList.remove('game-over')
     uncheck()
   } else {
+      var percent = (score/questions.length*10)
+    document.querySelector('.percent').innerText = `Congratulations!\nYou are ${percent}% developer!`
     getHighScore()
     document.body.classList.add('game-end')
     document.querySelector('.score-display').innerText = `Your score is ${score}\nHigh score is ${parseFloat(highScore.getItem('highScore'))}`
@@ -160,6 +168,7 @@ function getHighScore () {
     alert(`Congratulations!\nNew High Score is ${score}`)
   }
 }
-function resetScore () {
-  highScore.setItem('highScore', `0`)
-}
+
+// function resetScore () {
+//   highScore.setItem('highScore', `0`)
+// }

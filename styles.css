@@ -72,8 +72,8 @@ div.question {
     border-radius: 10px;
     min-height: 70px;
 }
-.radio-button {
-
+.score-display {
+    font-size: 2em
 }
 /* beginning of experiment */
 @keyframes click-wave {
@@ -161,8 +161,9 @@ div.question {
     pointer-events: none;
     transition: all 250ms ease;
     min-width: 100vw;
-    min-height: 52vh;
+    min-height: 50vh;
     background-color: rgb(206, 211, 211);
+    margin-top: 50px;
 
   }
   
@@ -183,7 +184,8 @@ div.question {
     pointer-events: none;
     transition: all 250ms ease;
     min-width: 100vw;
-    min-height: 52vh;
+    min-height: 50vh;
+    margin-top: 50px;
   }
   
   .game-over .wrong-answer {
@@ -203,7 +205,8 @@ div.question {
     pointer-events: none;
     transition: all 250ms ease;
     min-width: 100vw;
-    min-height: 52vh;
+    min-height: 50vh;
+    margin-top: 50px;
   }
   
   .game-end .end {
@@ -223,7 +226,8 @@ div.question {
     pointer-events: none;
     transition: all 250ms ease;
     min-width: 100vw;
-    min-height: 52vh;
+    min-height: 50vh;
+    margin-top: 50px;
   }
   
   .start .beginning {
