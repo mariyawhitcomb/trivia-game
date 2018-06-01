@@ -80,68 +80,25 @@ var score = 0
 var highScore = window.localStorage
 let i
 var index = []
-var percent = (score / questions.length * 10)
-var percentRound = Math.round(percent * 100) / 100
-// var secondsText = document.querySelector('.seconds')
-// const seconds = 10
-// var timer
-// // var timeRemaining
-// secondsText.innerText = 10
-
-function refill () {
-  for (let n = 0; n < questions.length; n++) {
-    index.push(n)
-  }
-  return index
+var percent
+var percentRound
+// function organizer
+// start the game => display start screen
+function startGame () {
+  document.body.classList.add('start')
 }
-function uncheck () {
-  for (let r = 0; r < radioButton.length; r++) {
-    if (radioButton[r].checked) {
-      radioButton[r].checked = false
-    }
-  }
+// begin the game => generate questions, refills index[]
+function begin () {
+  document.body.classList.remove('start')
+  document.body.classList.remove('good-job')
+  document.body.classList.remove('game-over')
+  refill()
+  uncheck()
+  generateQuestion()
 }
-function randomQuestion () {
-  i = index[Math.floor(Math.random() * index.length)]
-  var num = index.indexOf(i)
-  index.splice(num, 1)
-  return i
-}
-
-function generateQuestion () {
-  randomQuestion()
-  displayQuestions.innerText = questions[i].question
-  for (let x = 0; x < questions[i].prompts.length; x++) {
-    document.querySelector(`#choice${x + 1}`).innerText = questions[i].prompts[x]
-  }
-  document.querySelector('.question-number').innerText = `Question ${questions.length - index.length} of ${questions.length}`
-}
-function changeQ () {
-  if (index.length > 0) {
-    // secondsText.innerText = seconds
-    generateQuestion()
-    // timer = window.setInterval(countdown, 1000)
-    console.log(i)
-    document.body.classList.remove('good-job')
-    document.body.classList.remove('game-over')
-    uncheck()
-  } else {
-    document.querySelector('.percent').innerText = `Congratulations!\nYou are ${percentRound}% developer!`
-    getHighScore()
-    document.body.classList.add('game-end')
-    document.querySelector('.score-display').innerText = `Your score is ${score}\nHigh score is ${parseFloat(highScore.getItem('highScore'))}`
-  }
-}
-function exitGame () {
-  document.querySelector('.percent').innerText = `Congratulations!\nYou are ${percentRound}% developer!`
-  getHighScore()
-  document.body.classList.add('game-end')
-  document.querySelector('.score-display').innerText = `Your score is ${score}\nHigh score is ${parseFloat(highScore.getItem('highScore'))}`
-  index = []
-}
-function checkAnswer (e) {
-  e.preventDefault()
-  // stopInterval()
+// submit button => check answer function using value of the checked radio
+function checkAnswer (event) {
+  event.preventDefault()
   getAnswerValue()
   if (answerValue === questions[i].answer) {
     console.log('correct')
@@ -164,46 +121,80 @@ function getAnswerValue () {
     answerValue = document.getElementById('choice3').innerText
   }
 }
-// function countdown () {
-//   timeRemaining = parseInt(secondsText.innerText, 10)
-//   if (timeRemaining === 0) {
-//     checkAnswer()
-//     stopInterval()
-//     secondsText.innerText = seconds
-//   } else {
-//     timeRemaining = timeRemaining - 1
-//     secondsText.innerText = timeRemaining
-//   }
-// }
-// function stopInterval () {
-//   clearTimeout(timer)
-// }
-function begin () {
-  document.body.classList.remove('start')
-  document.body.classList.remove('good-job')
-  document.body.classList.remove('game-over')
-  refill()
-  generateQuestion()
-  // secondsText.innerText = seconds
-  // timer = window.setInterval(countdown, 1000)
+// next question => generates new question
+function changeQ () {
+  if (index.length > 0) {
+    generateQuestion()
+    console.log(i)
+    document.body.classList.remove('good-job')
+    document.body.classList.remove('game-over')
+    uncheck()
+  } else {
+    calcPercent()
+    document.querySelector('.percent').innerText = `Congratulations!\nYou are ${percentRound}% developer!`
+    getHighScore()
+    document.body.classList.add('game-end')
+    document.querySelector('.score-display').innerText = `Your score is ${score}\nHigh score is ${parseFloat(highScore.getItem('highScore'))}`
+  }
 }
+// exit game => brings you to the last screen
+function exitGame () {
+  calcPercent()
+  document.querySelector('.percent').innerText = `Congratulations!\nYou are ${percentRound}% developer!`
+  getHighScore()
+  document.body.classList.add('game-end')
+  document.querySelector('.score-display').innerText = `Your score is ${score}\nHigh score is ${parseFloat(highScore.getItem('highScore'))}`
+  index = []
+}
+// restart function takes user back to the start screen
 function restart () {
   document.body.classList.remove('game-end')
   score = 0
   startGame()
 }
-function startGame () {
-  document.body.classList.add('start')
+// refills index [] at the beginning of new game => lives in begin function
+function refill () {
+  for (let n = 0; n < questions.length; n++) {
+    index.push(n)
+  }
+  return index
 }
-startGame()
-
+// uncheck's radio buttons before each question and in the beginning of the new game
+function uncheck () {
+  for (let r = 0; r < radioButton.length; r++) {
+    if (radioButton[r].checked) {
+      radioButton[r].checked = false
+    }
+  }
+}
+// generates i value to be used in generate question function
+function randomQuestion () {
+  i = index[Math.floor(Math.random() * index.length)]
+  var num = index.indexOf(i)
+  index.splice(num, 1)
+  return i
+}
+// generates questions using random i
+function generateQuestion () {
+  i = randomQuestion()
+  displayQuestions.innerText = questions[i].question
+  for (let x = 0; x < questions[i].prompts.length; x++) {
+    document.querySelector(`#choice${x + 1}`).innerText = questions[i].prompts[x]
+  }
+  document.querySelector('.question-number').innerText = `Question ${questions.length - index.length} of ${questions.length}`
+}
+// compares current score to the stored high score
 function getHighScore () {
   if (score > highScore.getItem('highScore')) {
     highScore.setItem('highScore', `${score}`)
     alert(`Congratulations!\nNew High Score is ${score}`)
   }
 }
-
-// function resetScore () {
-//   highScore.setItem('highScore', `0`)
-// }
+// calculates oercentage of right answers
+function calcPercent () {
+  percent = (score / questions.length * 10)
+  percentRound = Math.round(percent * 100) / 100
+  return percentRound
+}
+// runs on reload
+startGame()
