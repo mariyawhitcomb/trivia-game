@@ -96,10 +96,6 @@ div.question {
   }
   
   .option-input {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -ms-appearance: none;
-    -o-appearance: none;
     appearance: none;
     position: relative;
     top: 13.33333px;
@@ -135,8 +131,6 @@ div.question {
     line-height: 40px;
   }
   .option-input:checked::after {
-    -webkit-animation: click-wave 0.65s;
-    -moz-animation: click-wave 0.65s;
     animation: click-wave 0.65s;
     background: #9da2a2;
     content: '';
