@@ -18,7 +18,7 @@ var questions = [
   },
   {
     question: 'How do you write "Hello World" in an alert box?',
-    prompts: ['msg("Hello World")', 'msgBox("Hello World")', 'alert("Hello World")', 'alertBox("Hello World")'],
+    prompts: ['msg("Hello World")', 'alert("Hello World")', 'alertBox("Hello World")'],
     answer: 'alert("Hello World")'
   },
   {
@@ -99,7 +99,7 @@ function randomQuestion () {
 }
 
 function generateQuestion () {
-  i = randomQuestion()
+  randomQuestion()
   displayQuestions.innerText = questions[i].question
   for (let x = 0; x < questions[i].prompts.length; x++) {
     document.querySelector(`#choice${x + 1}`).innerText = questions[i].prompts[x]
@@ -163,6 +163,7 @@ function startGame () {
   document.body.classList.add('start')
 }
 startGame()
+
 function getHighScore () {
   if (score > highScore.getItem('highScore')) {
     highScore.setItem('highScore', `${score}`)
