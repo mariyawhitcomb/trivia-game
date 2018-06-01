@@ -78,10 +78,15 @@ buttonNext.forEach(element => element.addEventListener('click', changeQ))
 var displayQuestions = document.querySelector('.question')
 var score = 0
 var highScore = window.localStorage
-let i = 0
+let i
 var index = []
 var percent = (score / questions.length * 10)
 var percentRound = Math.round(percent * 100) / 100
+// var secondsText = document.querySelector('.seconds')
+// const seconds = 10
+// var timer
+// // var timeRemaining
+// secondsText.innerText = 10
 
 function refill () {
   for (let n = 0; n < questions.length; n++) {
@@ -111,10 +116,11 @@ function generateQuestion () {
   }
   document.querySelector('.question-number').innerText = `Question ${questions.length - index.length} of ${questions.length}`
 }
-
 function changeQ () {
   if (index.length > 0) {
+    // secondsText.innerText = seconds
     generateQuestion()
+    // timer = window.setInterval(countdown, 1000)
     console.log(i)
     document.body.classList.remove('good-job')
     document.body.classList.remove('game-over')
@@ -133,8 +139,9 @@ function exitGame () {
   document.querySelector('.score-display').innerText = `Your score is ${score}\nHigh score is ${parseFloat(highScore.getItem('highScore'))}`
   index = []
 }
-function checkAnswer (radio) {
-  radio.preventDefault()
+function checkAnswer (e) {
+  e.preventDefault()
+  // stopInterval()
   getAnswerValue()
   if (answerValue === questions[i].answer) {
     console.log('correct')
@@ -157,12 +164,28 @@ function getAnswerValue () {
     answerValue = document.getElementById('choice3').innerText
   }
 }
+// function countdown () {
+//   timeRemaining = parseInt(secondsText.innerText, 10)
+//   if (timeRemaining === 0) {
+//     checkAnswer()
+//     stopInterval()
+//     secondsText.innerText = seconds
+//   } else {
+//     timeRemaining = timeRemaining - 1
+//     secondsText.innerText = timeRemaining
+//   }
+// }
+// function stopInterval () {
+//   clearTimeout(timer)
+// }
 function begin () {
   document.body.classList.remove('start')
   document.body.classList.remove('good-job')
   document.body.classList.remove('game-over')
   refill()
   generateQuestion()
+  // secondsText.innerText = seconds
+  // timer = window.setInterval(countdown, 1000)
 }
 function restart () {
   document.body.classList.remove('game-end')
