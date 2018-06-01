@@ -2,9 +2,10 @@ html {
     font-size: 16px;
 }
 body {
-    font-family: 'Inconsolata', monospace;
-    background-color: rgb(206, 211, 211);
-    color:  rgb(38, 65, 65);
+  font-family: 'Philosopher', sans-serif;
+  background-color: rgb(206, 211, 211);
+  color:  rgb(38, 65, 65);
+  font-variant-caps: all-petite-caps;
 }
 header {
     text-align: center;
@@ -13,7 +14,9 @@ header {
     border-bottom: 5px solid;
 }
 h1 {
-    font-size: 3em;
+  font-size: 3em;
+  margin: auto;
+  text-shadow: 2px 2px 8px black;
 }
 h2.question-number {
     font-size: 2em;
@@ -24,38 +27,33 @@ p {
     margin: 2em auto 2em 0.5em;
 }
 label {
-    margin: 10px;
-    font-size: 1.2em;
+  margin: 10px;
+  font-size: 1.5em;
+  font-weight: 700;
 }
 button {
-    margin-top: 2em;
-    font-family: 'Inconsolata', monospace;
-    font-size: 2em;
-    border-radius: 5px;
-    background-color: rgb(206, 211, 211);
-    width: 230px;
-    height: 60px;
-    box-shadow: 7px -5px 9px 0px #a9b5b5;
-    
+  font-size: 1.7em;
+  border-radius: 5px;
+  background-color: rgb(206, 211, 211);
+  width: 230px;
+  height: 60px;
+  box-shadow: 7px -5px 9px 0px #a9b5b5;
+  font-family: 'Philosopher', sans-serif;
+  font-variant-caps: all-petite-caps;
 }
-
-/* button.button-start {
-    margin: 0;
-    width: 230px;
-    height: 60px;
-} */
+button:focus {outline:0;}
 button#submit {
     width: 230px;
     height: 60px;
     box-shadow: 7px -5px 9px 0px #a9b5b5;
-    margin-top: 0;
 }
 
 div.question {
-    font-size: 1.3em;
-    margin-left: 4em;
+  font-size: 1.8em;
+  margin-bottom: 1em;
+  font-weight: 800;
 }
-.container {
+.container, .question {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -75,7 +73,12 @@ div.question {
 .score-display {
     font-size: 2em
 }
-/* beginning of experiment */
+.percent {
+  font-size: 2em;
+  margin-bottom: 1em;
+  font-weight: bold;
+  font-variant-caps: all-petite-caps
+}
 @keyframes click-wave {
     0% {
       height: 40px;
@@ -114,7 +117,6 @@ div.question {
     margin-right: 0.5rem;
     outline: none;
     position: initial;
-    /* z-index: 1000; */
   }
   .option-input:hover {
     background: #9faab7;
@@ -140,7 +142,6 @@ div.question {
     content: '';
     display: block;
     position: relative;
-    /* z-index: 100; */
   }
   .option-input.radio {
     border-radius: 20%;
@@ -148,7 +149,6 @@ div.question {
   .option-input.radio::after {
     border-radius: 50%;
   }
-  /* end of experiment */
 .nextQuestion {
     position: absolute;
     top: 50%;
@@ -163,7 +163,6 @@ div.question {
     min-width: 100vw;
     min-height: 50vh;
     background-color: rgb(206, 211, 211);
-    margin-top: 50px;
 
   }
   
@@ -185,7 +184,6 @@ div.question {
     transition: all 250ms ease;
     min-width: 100vw;
     min-height: 50vh;
-    margin-top: 50px;
   }
   
   .game-over .wrong-answer {
@@ -206,7 +204,6 @@ div.question {
     transition: all 250ms ease;
     min-width: 100vw;
     min-height: 50vh;
-    margin-top: 50px;
   }
   
   .game-end .end {
@@ -227,7 +224,6 @@ div.question {
     transition: all 250ms ease;
     min-width: 100vw;
     min-height: 50vh;
-    margin-top: 50px;
   }
   
   .start .beginning {

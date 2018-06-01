@@ -116,7 +116,8 @@ function changeQ () {
     uncheck()
   } else {
       var percent = (score/questions.length*10)
-    document.querySelector('.percent').innerText = `Congratulations!\nYou are ${percent}% developer!`
+      var percentRound = Math.round(percent * 100) / 100
+    document.querySelector('.percent').innerText = `Congratulations!\nYou are ${percentRound}% developer!`
     getHighScore()
     document.body.classList.add('game-end')
     document.querySelector('.score-display').innerText = `Your score is ${score}\nHigh score is ${parseFloat(highScore.getItem('highScore'))}`
