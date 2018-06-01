@@ -13,7 +13,7 @@ var questions = [
   },
   {
     question: 'What is the correct syntax for referring to an external script called "xxx.js"?',
-    prompts: ['<script name="xxx.js">','<script src="xxx.js">','<script href="xxx.js">'],
+    prompts: ['<script name="xxx.js">', '<script src="xxx.js">', '<script href="xxx.js">'],
     answer: '<script src="xxx.js">'
   },
   {
@@ -43,7 +43,7 @@ var questions = [
   },
   {
     question: 'How can you add a comment in a JavaScript?',
-    prompts: ["'This is a comment", "//This is a comment", "<!--This is a comment-->"],
+    prompts: ["'This is a comment", '//This is a comment', '<!--This is a comment-->'],
     answer: '//This is a comment'
   },
   {
@@ -62,6 +62,9 @@ var questions = [
     answer: 'navigator.appName'
   }
 ]
+
+var exit = document.querySelector('.exit')
+exit.addEventListener('click', exitGame)
 var radioButton = document.querySelectorAll('.radio-button')
 var newGame = document.querySelector('.button-end')
 newGame.addEventListener('click', restart)
@@ -77,6 +80,8 @@ var score = 0
 var highScore = window.localStorage
 let i = 0
 var index = []
+var percent = (score / questions.length * 10)
+var percentRound = Math.round(percent * 100) / 100
 
 function refill () {
   for (let n = 0; n < questions.length; n++) {
@@ -115,13 +120,18 @@ function changeQ () {
     document.body.classList.remove('game-over')
     uncheck()
   } else {
-      var percent = (score/questions.length*10)
-      var percentRound = Math.round(percent * 100) / 100
     document.querySelector('.percent').innerText = `Congratulations!\nYou are ${percentRound}% developer!`
     getHighScore()
     document.body.classList.add('game-end')
     document.querySelector('.score-display').innerText = `Your score is ${score}\nHigh score is ${parseFloat(highScore.getItem('highScore'))}`
   }
+}
+function exitGame () {
+  document.querySelector('.percent').innerText = `Congratulations!\nYou are ${percentRound}% developer!`
+  getHighScore()
+  document.body.classList.add('game-end')
+  document.querySelector('.score-display').innerText = `Your score is ${score}\nHigh score is ${parseFloat(highScore.getItem('highScore'))}`
+  index = []
 }
 function checkAnswer (radio) {
   radio.preventDefault()
