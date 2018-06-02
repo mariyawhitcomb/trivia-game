@@ -18,6 +18,10 @@ h1 {
   margin: auto;
   text-shadow: 2px 2px 8px black;
 }
+h3 {
+  margin: 3em;
+  font-size: 1.5em;
+}
 h2.question-number {
     font-size: 2em;
     margin: 1em;
@@ -47,7 +51,16 @@ button#submit {
     height: 60px;
     box-shadow: 7px -5px 9px 0px #a9b5b5;
 }
-
+.questions {
+  display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.timer {
+  font-size: 3em;
+  font-weight: 900;
+}
 div.question {
   font-size: 1.8em;
   margin-bottom: 1em;
@@ -245,6 +258,18 @@ div.question {
     pointer-events: none;
   }
   .game-end .exit {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .game-end #submit {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .game-over #submit {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .good-job #submit {
     opacity: 0;
     pointer-events: none;
   }
