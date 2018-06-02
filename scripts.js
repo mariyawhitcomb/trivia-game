@@ -72,6 +72,9 @@ var startButton = document.querySelector('.button-start')
 startButton.addEventListener('click', begin)
 var button = document.querySelector('#submit')
 button.addEventListener('click', checkAnswer)
+button.addEventListener('click', prevent)
+var secondsDom = document.querySelector('.timer')
+
 var answerValue
 var buttonNext = document.querySelectorAll('.button-next')
 buttonNext.forEach(element => element.addEventListener('click', changeQ))
@@ -82,23 +85,47 @@ let i
 var index = []
 var percent
 var percentRound
+const seconds = 5
+var timer
+var timeRemaining
+
 // function organizer
+// prevent default
+function prevent (e) {
+  e.preventDefault()
+}
 // start the game => display start screen
 function startGame () {
   document.body.classList.add('start')
 }
 // begin the game => generate questions, refills index[]
 function begin () {
+  resetTimer()
   document.body.classList.remove('start')
   document.body.classList.remove('good-job')
   document.body.classList.remove('game-over')
   refill()
   uncheck()
   generateQuestion()
+  timer = window.setInterval(interval, 1000)
+}
+// interval and reset function for the timer
+function interval () {
+  timeRemaining = parseInt(secondsDom.innerHTML, 10)
+  if (timeRemaining === 0) {
+    checkAnswer()
+    secondsDom.innerHTML = seconds
+  } else {
+    timeRemaining = timeRemaining - 1
+    secondsDom.innerHTML = timeRemaining
+  }
+}
+function resetTimer () {
+  secondsDom.innerHTML = seconds
 }
 // submit button => check answer function using value of the checked radio
-function checkAnswer (event) {
-  event.preventDefault()
+function checkAnswer () {
+  clearTimeout(timer)
   getAnswerValue()
   if (answerValue === questions[i].answer) {
     console.log('correct')
@@ -124,6 +151,8 @@ function getAnswerValue () {
 // next question => generates new question
 function changeQ () {
   if (index.length > 0) {
+    resetTimer()
+    timer = window.setInterval(interval, 1000)
     generateQuestion()
     console.log(i)
     document.body.classList.remove('good-job')
