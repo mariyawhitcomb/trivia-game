@@ -114,7 +114,7 @@ function interval () {
   timeRemaining = parseInt(secondsDom.innerHTML, 10)
   if (timeRemaining === 0) {
     checkAnswer()
-    secondsDom.innerHTML = seconds
+    resetTimer()
   } else {
     timeRemaining = timeRemaining - 1
     secondsDom.innerHTML = timeRemaining
@@ -128,12 +128,9 @@ function checkAnswer () {
   clearTimeout(timer)
   getAnswerValue()
   if (answerValue === questions[i].answer) {
-    console.log('correct')
     score += 10
-    console.log(score)
     document.body.classList.add('good-job')
   } else {
-    console.log('wrong')
     document.body.classList.add('game-over')
   }
 }
@@ -154,7 +151,6 @@ function changeQ () {
     resetTimer()
     timer = window.setInterval(interval, 1000)
     generateQuestion()
-    console.log(i)
     document.body.classList.remove('good-job')
     document.body.classList.remove('game-over')
     uncheck()
