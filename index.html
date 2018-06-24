@@ -12,13 +12,14 @@
     <header>
         <h1>How developer are you?</h1>
     </header>
-    <div class="questions">
+    <div class="wrapper">
+    <div class="questions hide">
             <h2 class="question-number container"></h2>
             <h2 class="timer"></h2>
     </div>
-            <div class="question"></div>
-            <form class="container">
-                    <div class="radio">
+            <div class="question hide"></div>
+            <form class="container hide">
+                    <div class="radio hide">
                         <div class="radio style">
                       <input class="radio-button option-input radio" type="radio" id="answer1" name="answer">
                       <label id="choice1" for="answer1"></label>
@@ -55,6 +56,7 @@
                     <button class="button-end container" type="submit">New game</button>
                 </section>
         </div>
+    </div>
         <button class="exit container" type="submit">Exit Game</button>
 <script src="scripts.js"></script>
 </body>

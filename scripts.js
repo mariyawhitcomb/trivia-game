@@ -97,10 +97,13 @@ function prevent (e) {
 // start the game => display start screen
 function startGame () {
   document.body.classList.add('start')
+  document.body.classList.add('js-hide')
+
 }
 // begin the game => generate questions, refills index[]
 function begin () {
   resetTimer()
+  document.body.classList.remove('js-hide')
   document.body.classList.remove('start')
   document.body.classList.remove('good-job')
   document.body.classList.remove('game-over')
@@ -127,6 +130,8 @@ function resetTimer () {
 function checkAnswer () {
   clearTimeout(timer)
   getAnswerValue()
+  document.body.classList.add('js-hide')
+
   if (answerValue === questions[i].answer) {
     score += 10
     document.body.classList.add('good-job')
@@ -153,6 +158,7 @@ function changeQ () {
     generateQuestion()
     document.body.classList.remove('good-job')
     document.body.classList.remove('game-over')
+    document.body.classList.remove('js-hide')
     uncheck()
   } else {
     calcPercent()
@@ -167,6 +173,7 @@ function exitGame () {
   calcPercent()
   document.querySelector('.percent').innerText = `Congratulations!\nYou are ${percentRound}% developer!`
   getHighScore()
+  document.body.classList.add('js-hide')
   document.body.classList.add('game-end')
   document.querySelector('.score-display').innerText = `Your score is ${score}\nHigh score is ${parseFloat(highScore.getItem('highScore'))}`
   index = []

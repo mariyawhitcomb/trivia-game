@@ -6,18 +6,19 @@ body {
   background-color: rgb(206, 211, 211);
   color:  rgb(38, 65, 65);
   font-variant-caps: all-petite-caps;
+  background-position:  fixed;
+  /* margin-top: 136px; */
 }
 header {
     text-align: center;
-    margin: 20px;
     padding: 20px;
     border-bottom: 5px solid;
+    position: inherit;
+    justify-content: center;
+    flex-direction:  row;
+    width:  100vw;
 }
-h1 {
-  font-size: 3em;
-  margin: auto;
-  text-shadow: 2px 2px 8px black;
-}
+
 h3 {
   margin: 3em;
   font-size: 1.5em;
@@ -53,9 +54,11 @@ button#submit {
 }
 .questions {
   display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  position: absolute;
+  width: 100vw;
 }
 .timer {
   font-size: 3em;
@@ -195,10 +198,10 @@ div.question {
   }
   .wrong-answer {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 4rem;
+    /* top: 8%; */
+    /* left: 50%; */
+    /* transform: translate(-50%, -50%); */
+    /* padding: 4rem; */
     background-color: rgb(206, 211, 211);
     text-align: center;
     z-index: 10;
@@ -206,7 +209,11 @@ div.question {
     pointer-events: none;
     transition: all 250ms ease;
     min-width: 100vw;
-    min-height: 50vh;
+    min-height: auto;
+    /* display:  flex; */
+    /* align-items:  center; */
+    /* justify-content:  space-around; */
+    top: 180px;
   }
   
   .game-over .wrong-answer {
@@ -272,4 +279,16 @@ div.question {
   .good-job #submit {
     opacity: 0;
     pointer-events: none;
+  }
+  .js-hide .hide{
+    opacity: 0;
+    pointer-events: none;
+  }
+  .radio.hide {
+    margin-top: 40px;
+  }
+  h1 {
+    font-size: 3em;
+    margin: auto;
+    text-shadow: 2px 2px 8px black;
   }
