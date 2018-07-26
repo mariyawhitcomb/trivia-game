@@ -1,47 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link href="https://fonts.googleapis.com/css?family=Philosopher" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Trivia Game</title>
 </head>
+
 <body>
     <header>
         <h1>How developer are you?</h1>
     </header>
     <div class="wrapper">
-    <div class="questions hide">
+        <div class="questions hide">
             <h2 class="question-number container"></h2>
             <h2 class="timer"></h2>
-    </div>
-            <div class="question hide"></div>
-            <form class="container hide">
-                    <div class="radio hide">
-                        <div class="radio style">
-                      <input class="radio-button option-input radio" type="radio" id="answer1" name="answer">
-                      <label id="choice1" for="answer1"></label>
-                    </div>
-                    <div class="radio style">
-                      <input class="radio-button option-input radio" type="radio" id="answer2" name="answer">
-                      <label id="choice2" for="answer2"></label>
-                    </div>
-                    <div class="radio style">
-                      <input class="radio-button option-input radio" type="radio" id="answer3" name="answer">
-                      <label id="choice3" for="answer3"></label>
-                    </div></div>
-                    <div class="container">
-                      <button class="container" id="submit" type="submit">Submit</button>
-                    </div>
-            </form>
-    <div class="submit-screen">
+        </div>
+        <div class="question hide"></div>
+        <form class="container hide">
+            <div class="radio hide">
+                <div class="radio style">
+                    <input class="radio-button option-input radio" type="radio" id="answer1" name="answer">
+                    <label id="choice1" for="answer1"></label>
+                </div>
+                <div class="radio style">
+                    <input class="radio-button option-input radio" type="radio" id="answer2" name="answer">
+                    <label id="choice2" for="answer2"></label>
+                </div>
+                <div class="radio style">
+                    <input class="radio-button option-input radio" type="radio" id="answer3" name="answer">
+                    <label id="choice3" for="answer3"></label>
+                </div>
+            </div>
+            <div class="container">
+                <button class="container" id="submit" type="submit">Submit</button>
+            </div>
+        </form>
+        <div class="submit-screen">
             <section class="beginning container">
-                    <h1 class="correct-answer">Lets find out!</h1>
-                    <h3>But remember... you only have 5 seconds to think...</h3>
-                    <button class="button-start container" type="submit">Start</button>
-                </section>
+                <h1 class="correct-answer">Lets find out!</h1>
+                <h3>But remember... you only have 10 seconds to think...</h3>
+                <button class="button-start container" type="submit">Start</button>
+            </section>
             <section class="nextQuestion container">
                 <h1 class="correct-answer">Correct!</h1>
                 <button class="button-next container" type="submit">Next Question</button>
@@ -51,13 +55,14 @@
                 <button class="button-next container" type="submit">Next Question</button>
             </section>
             <section class="end container">
-                    <div class="percent"></div>
-                    <div class="score-display"></div>
-                    <button class="button-end container" type="submit">New game</button>
-                </section>
+                <div class="percent"></div>
+                <div class="score-display"></div>
+                <button class="button-end container" type="submit">New game</button>
+            </section>
         </div>
     </div>
-        <button class="exit container" type="submit">Exit Game</button>
-<script src="scripts.js"></script>
+    <button class="exit container" type="submit">Exit Game</button>
+    <script src="scripts.js"></script>
 </body>
+
 </html>
